@@ -1,5 +1,8 @@
 - name: Crate Jenkins Jobs
   hosts: localhost
   connection: local
+  vars:
+    jobs:
+      - roboshop-terraform
   roles:
     - jenkins-jobs
