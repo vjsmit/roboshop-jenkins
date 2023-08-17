@@ -10,5 +10,6 @@
       - shipping
       - payment
       - dispatch
+      - frontend
   roles:
     - jenkins-jobs
