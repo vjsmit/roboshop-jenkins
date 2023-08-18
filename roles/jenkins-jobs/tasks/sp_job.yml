@@ -1,4 +1,4 @@
-job.yml- name: Setup Template
+- name: Setup Template
   ansible.builtin.template:
     src: sbranch.xml
     dest: /tmp/sbranch.xml
