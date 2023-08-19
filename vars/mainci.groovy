@@ -2,8 +2,6 @@ def call() {
 
     node ('workstation') {
 
-        stages {
-
             if (env.cibuild == "java") {
 
                 stage ('Build') {
@@ -27,6 +25,5 @@ def call() {
             stage ('Publish Artifact') {
                     echo 'Publish Artifact'
             }
-        }
     }
 }
