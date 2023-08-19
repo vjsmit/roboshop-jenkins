@@ -3,9 +3,13 @@ def call() {
     node ('workstation') {
 
         stage ('Code-Checkout') {
-            sh 'env'
             sh 'find . | grep "^./" |xargs rm -rf'
-            git branch: env.BRANCH_NAME, url: 'https://github.com/vjsmit/frontend'
+            if(env.TAG_NAME ==~ ".*") {
+                env.gitbrname = "refs/tags/${env.TAG_NAME}"
+            } else {
+                env.gitbrname = "${env.BRANCH_NAME}"
+            }
+            checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: "https://github.com/vjsmit/${env.component}"]], branches: [[name: gitbrname]]], poll: false
         }
 
         if (env.cibuild == "java") {
